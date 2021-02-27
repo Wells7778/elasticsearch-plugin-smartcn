@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  elasticsearch:
+    image: elasticsearch-smartcn
+    container_name: elasticsearch
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    volumes:
+      - ./esdata:/usr/share/elasticsearch/data
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+
+volumes:
+  es_data:
